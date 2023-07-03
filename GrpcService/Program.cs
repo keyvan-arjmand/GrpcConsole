@@ -1,4 +1,6 @@
 using GrpcService.Services;
+using Microsoft.EntityFrameworkCore;
+using User;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+
+builder.Services.AddDbContext<DB>(options =>
+    options.UseSqlServer("Data Source=.;Initial Catalog=Repair.Net7;Integrated Security=True"));
 
 var app = builder.Build();
 

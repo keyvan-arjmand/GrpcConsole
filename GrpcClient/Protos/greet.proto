@@ -8,14 +8,34 @@ package greet;
 service Greeter {
   // Sends a greeting
   rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc CreateUser (User) returns (Respnse);
 }
 
 // The request message containing the user's name.
 message HelloRequest {
   string name = 1;
 }
-
+message Respnse{
+	bool State = 1;
+}
 // The response message containing the greetings.
 message HelloReply {
   string message = 1;
+}
+message User{
+	string name=1;
+	string email=2;
+	Details details=3;
+	Type type =4;
+}
+message Details{
+	string PhoneNumber=1;
+	string Address =2;
+}
+
+
+enum Type {
+  None = 0;
+  Silver = 1;
+  Gold = 2;
 }
